@@ -3,9 +3,26 @@ ModernPortfolioTheory
 
 This is the common repository for the LMU course "Modern Portfolio Theory with Matlab"
 
+# Install git
+
+Set username and email. Both will be globally viewable on github. 
+https://help.github.com/articles/set-up-git#platform-windows
+
+
 # Create Github account
 
-Go to www.github.com and create account
+Go to www.github.com and create an account. Note that your email
+address will be openly viewable!
+
+
+
+
+## SSH Access
+
+Github for Windows
+https://help.github.com/articles/generating-ssh-keys#platform-windows
+
+
 
 # Git Resources
 
@@ -25,5 +42,9 @@ for ii=1:nObs
   value[ii] = x[ii]^2
 end
 ````
+
+For Windows, a possible offline markdown viewer could be MarkdownPad.
+Also, here you can find a list of possible other viewers:
+http://mashable.com/2013/06/24/markdown-tools/
 
 Also, it is easy to reference commits, people or pull requests and the like.
