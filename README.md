@@ -3,7 +3,16 @@ ModernPortfolioTheory
 
 This is the common repository for the LMU course "Modern Portfolio Theory with Matlab"
 
-# Install git
+# Installation
+
+## Create account on Github
+
+Go to www.github.com and create an account. Note that you eventually will have to submit a publicly visible email address. At best, you already use this email address from start on.
+
+## Set up Github
+
+Follow link to set up git webpage. Download Github for Windows. This will install git together with a git shell and ssh on your computer.
+
 
 Set username and email. Both will be globally viewable on github. 
 https://help.github.com/articles/set-up-git#platform-windows
@@ -11,8 +20,7 @@ https://help.github.com/articles/set-up-git#platform-windows
 
 # Create Github account
 
-Go to www.github.com and create an account. Note that your email
-address will be openly viewable!
+
 
 
 
