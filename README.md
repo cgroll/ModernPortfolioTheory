@@ -11,23 +11,34 @@ Go to www.github.com and create an account. Note that you eventually will have t
 
 ## Set up Github
 
-Follow link to set up git webpage. Download Github for Windows. This will install git together with a git shell and ssh on your computer.
+- Follow link to the "set up git" webpage: https://github.com/cgroll/ModernPortfolioTheory.git
+- press "Download Github for Windows": this will also install git together with a git shell
+- install "Github for Windows": set username and email, so that your commits can be tracked back to you
 
+## Fork Main Repository
 
-Set username and email. Both will be globally viewable on github. 
-https://help.github.com/articles/set-up-git#platform-windows
+Go to the main project repository on https://github.com/cgroll/ModernPortfolioTheory and press "Fork". You now have the complete project data in your own account.
 
+## Clone repository
 
-# Create Github account
+In order to get the project data to your local computer, go to the project repository in *your own account*, and press "clone".
 
+## Set upstream
 
+You need to be connected to two different repositories:
+- your *own* version of the project, which you already did clone. Here, you will push all your changes to.
+- the *original* version of the project. Here, you will pull the project changes from, which were made by your collaborators.
 
-
-
+Therefore, we still need to set the link to the original project. We will refer to it as "upstream".
+````sh
+git remote add upstream https://github.com/cgroll/ModernPortfolioTheory.git
+````
 
 ## SSH Access
 
-Github for Windows
+In order to enable synchronizations without password requests, you originally had to enable ssh identification. However, you should not be required to do this anymore. See https://help.github.com/articles/do-i-need-ssh-keys-to-use-github-for-windows
+
+Otherwise, you can follow the instructions here:
 https://help.github.com/articles/generating-ssh-keys#platform-windows
 
 
