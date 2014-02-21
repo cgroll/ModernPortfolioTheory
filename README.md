@@ -1,7 +1,11 @@
 ModernPortfolioTheory
 =====================
 
-This is the common repository for the LMU course "Modern Portfolio Theory with Matlab"
+This is the common repository for the LMU course "Modern Portfolio
+Theory with Matlab". The README file lists some instructions and tips
+in order to participate in the development process. If you are
+interested in tips on the usage of the package, neither documentation
+nor tutorial are generated yet.  
 
 # Installation on windows
 
@@ -11,39 +15,118 @@ Go to www.github.com and create an account. Note that you eventually will have t
 
 ## Set up Github
 
-- Follow link to the "set up git" webpage: https://github.com/cgroll/ModernPortfolioTheory.git
+- Follow link to the "set up git" webpage:
+  https://help.github.com/articles/set-up-git#platform-windows
+- at individual installation steps, choose the following options:
+  - advanced context menu
+  - use git bash only
+  - checkout windows style, commit unix-style
 - press "Download Github for Windows": this will also install git together with a git shell
-- install "Github for Windows": set username and email, so that your commits can be tracked back to you (for issues for when your commits are not correctly contributed to you, see: https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile#which-contributions-are-counted)
+- install "Github for Windows": set username and email correctly, in
+  order to make your contributions to the project be counted (for
+  issues for when your commits are not correctly contributed to you,
+  see:
+  https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile#which-contributions-are-counted) 
 
 ## Fork Main Repository
 
-Go to the main project repository on https://github.com/cgroll/ModernPortfolioTheory and press "Fork". You now have the complete project data in your own account.
+Go to the main project repository on
+https://github.com/cgroll/ModernPortfolioTheory and press "Fork". You
+now have a copy of the complete project data in your own github
+account. 
 
 ## Clone repository
 
-In order to get the project data to your local computer, go to the project repository in *your own account*, and press "clone".
+In order to get the project data to your local computer, go to the
+project repository in *your own account*, and press "clone". You
+really want to clone your copy of the project, since this is the only
+one that you are allowed to write to.
 
 ## Set upstream
 
 You need to be connected to two different repositories:
 - your *own* version of the project, which you already did clone. Here, you will push all your changes to.
-- the *original* version of the project. Here, you will pull the project changes from, which were made by your collaborators.
+- the *original* version of the project. From this you will pull the
+  project changes which were made by your collaborators.
 
-Therefore, we still need to set the link to the original project. We will refer to it as "upstream".
+Since you did clone only your own copy of the project, you still need
+to set the link to the original project. We will refer to it as
+"upstream". 
+
 ````sh
 git remote add upstream https://github.com/cgroll/ModernPortfolioTheory.git
 ````
 
 ## SSH Access
 
-In order to enable synchronizations without password requests, you originally had to enable ssh identification. However, you should not be required to do this anymore. See https://help.github.com/articles/do-i-need-ssh-keys-to-use-github-for-windows
+In order to enable synchronizations without password queries, you
+usually have to enable ssh identification first. However, this should
+be automatically set up for you through the Github for Windows app.
+You will simply receive a notification that a ssh key of your computer
+was added to your github account. See:
+https://help.github.com/articles/do-i-need-ssh-keys-to-use-github-for-windows
 
-Otherwise, you can follow the instructions here:
+As long as you do not change the computer in the CIP-Pool, you do not
+need to bother about any password queries.
+
+## SSH Access on different computers
+
+If you need to manually set up ssh access, you can follow the
+instructions of the github help pages:
 https://help.github.com/articles/generating-ssh-keys#platform-windows
 
 
 
-# Git Resources
+# Using Git
+
+## Advantages
+- collaboration: simultaneous working at same file (cheaply resolving
+  conflicts) 
+- roll back project to previous state
+- branching: sandbox environment for experimenting (never break
+  already working code) 
+- split off development: other people can still rely on stable code
+  base 
+
+## Git concept
+Every single file and change that was ever done to the repository will
+be kept forever. 
+
+(For efficient storage, files are stored as "data blobs")
+
+## Git introduction
+
+For a nice introduction to the basic usage of git, take a look at the
+atlassian tutorials:
+- https://www.atlassian.com/git/tutorial/git-basics
+
+For a tutorial on branching and merging, check out:
+- https://www.atlassian.com/git/tutorial/git-branches
+
+## Resolving conflicts
+
+- git merge 
+- manually fix conflicts
+- git add file again
+- git commit
+
+http://githowto.com/resolving_conflicts
+https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line
+
+## Git resources
+- official documentation: http://git-scm.com/documentation
+- git related posts on blog:
+  http://grollchristian.wordpress.com/tag/git/ 
+
+## Branching
+
+
+
+## Git Gui
+
+## Binary files and large data files
+
+# Using Github
 
 # Writing on Github
 
@@ -68,8 +151,34 @@ http://mashable.com/2013/06/24/markdown-tools/
 
 Also, it is easy to reference commits, people or pull requests and the like.
 
+# Development workflow
+
+## Fork model
+
+Avoid re-writing history of already published commits.
+
 # Pull Request
 
 Only pull requests are merged into the code base that do not cause any conflicts.
 In order to make sure that your pull request does not show any conflicts, first pull from upstream to master, and merge any new changes into your feature branch. Then, renew your pull request (any further commits to your feature branch should probably be automatically added to your previous pull request).
 
+# Matlab requirements
+
+## style guidelines
+
+## documentation
+
+## unit testing
+
+## data format 
+tables
+
+## cooperation requirements
+- try not to break APIs
+- avoid function renaming
+
+# Project goals
+
+## Modularity
+
+## Project documentation / tutorial
