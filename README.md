@@ -48,3 +48,9 @@ Also, here you can find a list of possible other viewers:
 http://mashable.com/2013/06/24/markdown-tools/
 
 Also, it is easy to reference commits, people or pull requests and the like.
+
+# Pull Request
+
+Only pull requests are merged into the code base that do not cause any conflicts.
+In order to make sure that your pull request does not show any conflicts, first pull from upstream to master, and merge any new changes into your feature branch. Then, renew your pull request (any further commits to your feature branch should probably be automatically added to your previous pull request).
+
