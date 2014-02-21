@@ -13,7 +13,7 @@ Go to www.github.com and create an account. Note that you eventually will have t
 
 - Follow link to the "set up git" webpage: https://github.com/cgroll/ModernPortfolioTheory.git
 - press "Download Github for Windows": this will also install git together with a git shell
-- install "Github for Windows": set username and email, so that your commits can be tracked back to you
+- install "Github for Windows": set username and email, so that your commits can be tracked back to you (for issues for when your commits are not correctly contributed to you, see: https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile#which-contributions-are-counted)
 
 ## Fork Main Repository
 
