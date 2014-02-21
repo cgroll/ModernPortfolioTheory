@@ -3,7 +3,7 @@ ModernPortfolioTheory
 
 This is the common repository for the LMU course "Modern Portfolio Theory with Matlab"
 
-# Install git
+# Install (on windows) git
 
 Set username and email. Both will be globally viewable on github. 
 https://help.github.com/articles/set-up-git#platform-windows
