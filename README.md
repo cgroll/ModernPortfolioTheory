@@ -26,7 +26,7 @@ Go to www.github.com and create an account. Note that you eventually will have t
   order to make your contributions to the project be counted (for
   issues for when your commits are not correctly contributed to you,
   see:
-  https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile#which-contributions-are-counted) 
+  https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile#which-contributions-are-counted). Note: Contributions to forks are only counted when they land in the upstream's default branch. 
 
 ## Fork Main Repository
 
@@ -39,7 +39,7 @@ account.
 
 In order to get the project data to your local computer, go to the
 project repository in *your own account*, and press "clone". You
-really want to clone your copy of the project, since this is the only
+really want to clone *your copy* of the project, since this is the only
 one that you are allowed to write to.
 
 ## Set upstream
@@ -51,7 +51,7 @@ You need to be connected to two different repositories:
 
 Since you did clone only your own copy of the project, you still need
 to set the link to the original project. We will refer to it as
-"upstream". 
+"upstream". In either Windows or git shell, type
 
 ````sh
 git remote add upstream https://github.com/cgroll/ModernPortfolioTheory.git
@@ -66,7 +66,7 @@ You will simply receive a notification that a ssh key of your computer
 was added to your github account. See:
 https://help.github.com/articles/do-i-need-ssh-keys-to-use-github-for-windows
 
-As long as you do not change the computer in the CIP-Pool, you do not
+As long as you do not change the computer in the CIP-Pool, you should not
 need to bother about any password queries.
 
 ## SSH Access on different computers
@@ -80,7 +80,7 @@ https://help.github.com/articles/generating-ssh-keys#platform-windows
 # Using Git
 
 ## Advantages
-- collaboration: simultaneous working at same file (cheaply resolving
+- collaboration: simultaneously working on the same file (cheaply resolving
   conflicts) 
 - roll back project to previous state
 - branching: sandbox environment for experimenting (never break
@@ -90,9 +90,12 @@ https://help.github.com/articles/generating-ssh-keys#platform-windows
 
 ## Git concept
 Every single file and change that was ever done to the repository will
-be kept forever. 
+be kept forever. (For efficient storage, files are stored as "data blobs")
 
-(For efficient storage, files are stored as "data blobs")
+There are three states that your files can reside in:
+- committed (files are save in database)
+- modified (new changes are not added to database yet)
+- staged (new changes are not added yet, but file is marked to be added with next commit) 
 
 ## Git introduction
 
@@ -102,6 +105,13 @@ atlassian tutorials:
 
 For a tutorial on branching and merging, check out:
 - https://www.atlassian.com/git/tutorial/git-branches
+
+## Main commands
+````sh
+git add foo.txt
+git add bar.txt
+git commit -m "added files foo and bar"
+````
 
 ## Resolving conflicts
 
@@ -114,6 +124,7 @@ http://githowto.com/resolving_conflicts
 https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line
 
 ## Git resources
+
 - official documentation: http://git-scm.com/documentation
 - git related posts on blog:
   http://grollchristian.wordpress.com/tag/git/ 
@@ -126,9 +137,12 @@ https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-lin
 
 ## Binary files and large data files
 
+Remember: every data that you ever add to your repository will reside in the database for ever! (At least, if you do not mess with the git database on a very fundamental level) Hence, be careful not to commit large datafiles that change on a regular basis.
+(For a more extensive description of the problem of large data files see http://grollchristian.wordpress.com/2013/10/01/git-for-data-analysis-1 )
+
 # Using Github
 
-# Writing on Github
+## Writing on Github
 
 In order to write on github, you can make use of github flavored markdown (GFV), which easily let's you convert text into formatted html output. github markdown is a slight modification of general markdown, which aims to take some specific requirements of code development into account. Some resources on this topic are:
 - https://help.github.com/articles/markdown-basics
@@ -165,6 +179,17 @@ In order to make sure that your pull request does not show any conflicts, first 
 # Matlab requirements
 
 ## style guidelines
+
+functionName
+variableName
+
+instead of x, a, b, xx use isAllowed, nObservations, simulatedValues
+
+don't use pluralization: date and dates are hard to distinguish! Use dateArray, dateVector, ...
+
+function documentation:
+
+Logical operators like “=”, “&” and “|” should always be surrounded by white spaces.
 
 ## documentation
 
