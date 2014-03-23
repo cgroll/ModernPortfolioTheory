@@ -123,8 +123,35 @@ Start new branch based on current development:
 git checkout -b create-markowitz-model develop
 git add someFile.m
 git commit -m "first file added"
-git push -u develop create-markowitz-model
+git push -u origin create-markowitz-model
 ````
+
+## Keep up to date
+
+Get code extensions of collaborators:
+
+````sh
+git checkout develop
+git pull origin develop
+git checkout create-markowitz-model
+git merge develop
+````
+
+## Merge feature branch into code base
+
+- push latest commits to github
+
+````sh
+git push -u origin create-markowitz-model
+````
+- file pull request in github (from feature branch to develop branch)
+- add relevant people to discussion of new code
+- note: further commits to feature branch will automatically be added to pull request
+
+## Create new feature
+If new feature shall be developed based on last feature, while pull request of 
+last feature is not yet merged:
+- create new feature branch based on last feature
 
 ## Gitflow workflow
 
