@@ -28,34 +28,6 @@ Go to www.github.com and create an account. Note that you eventually will have t
   see:
   https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile#which-contributions-are-counted). Note: Contributions to forks are only counted when they land in the upstream's default branch. 
 
-## Fork Main Repository
-
-Go to the main project repository on
-https://github.com/cgroll/ModernPortfolioTheory and press "Fork". You
-now have a copy of the complete project data in your own github
-account. 
-
-## Clone repository
-
-In order to get the project data to your local computer, go to the
-project repository in *your own account*, and press "clone". You
-really want to clone *your copy* of the project, since this is the only
-one that you are allowed to write to.
-
-## Set upstream
-
-You need to be connected to two different repositories:
-- your *own* version of the project, which you already did clone. Here, you will push all your changes to.
-- the *original* version of the project. From this you will pull the
-  project changes which were made by your collaborators.
-
-Since you did clone only your own copy of the project, you still need
-to set the link to the original project. We will refer to it as
-"upstream". In either Windows or git shell, type
-
-````sh
-git remote add upstream https://github.com/cgroll/ModernPortfolioTheory.git
-````
 
 ## SSH Access
 
@@ -75,7 +47,13 @@ If you need to manually set up ssh access, you can follow the
 instructions of the github help pages:
 https://help.github.com/articles/generating-ssh-keys#platform-windows
 
+## Clone repository
 
+On your computer, change to the directory that you want the repository to reside in. In this directory, the following command will create a folder ModernPortfolioTheory:
+
+```` sh
+git clone git@github.com:cgroll/ModernPortfolioTheory.git
+````
 
 # Using Git
 
@@ -85,8 +63,9 @@ https://help.github.com/articles/generating-ssh-keys#platform-windows
 - roll back project to previous state
 - branching: sandbox environment for experimenting (never break
   already working code) 
-- split off development: other people can still rely on stable code
+- split off code development: other people can still rely on stable code
   base 
+- github as communication plattform
 
 ## Git concept
 Every single file and change that was ever done to the repository will
@@ -97,14 +76,18 @@ There are three states that your files can reside in:
 - modified (new changes are not added to database yet)
 - staged (new changes are not added yet, but file is marked to be added with next commit) 
 
+Additional stage step allows to commit only subset of modified files.
+
 ## Git introduction
 
 For a nice introduction to the basic usage of git, take a look at the
 atlassian tutorials:
 - https://www.atlassian.com/git/tutorial/git-basics
+- https://www.atlassian.com/de/git/tutorial/git-basics (german version)
 
 For a tutorial on branching and merging, check out:
 - https://www.atlassian.com/git/tutorial/git-branches
+- https://www.atlassian.com/de/git/tutorial/git-branches
 
 ## Main commands
 ````sh
@@ -131,6 +114,24 @@ https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-lin
 
 ## Branching
 
+Outsource development of new features into individual branches: main code base
+should never contain defective code.
+
+Start new branch based on current development:
+
+````sh
+git checkout -b create-markowitz-model develop
+git add someFile.m
+git commit -m "first file added"
+git push -u develop create-markowitz-model
+````
+
+## Gitflow workflow
+
+- NEVER rewrite history that already was published to github 
+- NEVER directly commit to master branch
+- create feature branch for new development
+- file pull request into develop branch 
 
 
 ## Git Gui
@@ -207,3 +208,40 @@ tables
 ## Modularity
 
 ## Project documentation / tutorial
+
+
+
+
+
+# Instructions for forking workflow
+## Fork Main Repository
+
+Go to the main project repository on
+https://github.com/cgroll/ModernPortfolioTheory and press "Fork". You
+now have a copy of the complete project data in your own github
+account. 
+
+## Clone repository
+
+In order to get the project data to your local computer, go to the
+project repository in *your own account*, and press "clone". You
+really want to clone *your copy* of the project, since this is the only
+one that you are allowed to write to.
+
+## Set upstream
+
+You need to be connected to two different repositories:
+- your *own* version of the project, which you already did clone. Here, you will push all your changes to.
+- the *original* version of the project. From this you will pull the
+  project changes which were made by your collaborators.
+
+Since you did clone only your own copy of the project, you still need
+to set the link to the original project. We will refer to it as
+"upstream". In either Windows or git shell, type
+
+````sh
+git remote add upstream https://github.com/cgroll/ModernPortfolioTheory.git
+````
+
+
+
