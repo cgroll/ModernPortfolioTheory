@@ -112,6 +112,22 @@ https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-lin
 - git related posts on blog:
   http://grollchristian.wordpress.com/tag/git/ 
 
+## Git Gui
+
+## Binary files and large data files
+
+Remember: every data that you ever add to your repository will reside in the database for ever! (At least, if you do not mess with the git database on a very fundamental level) Hence, be careful not to commit large datafiles that change on a regular basis.
+(For a more extensive description of the problem of large data files see http://grollchristian.wordpress.com/2013/10/01/git-for-data-analysis-1 )
+
+# Development workflow: gitflow workflow
+
+## Gitflow workflow
+
+- NEVER rewrite history that already was published to github 
+- NEVER directly commit to master branch
+- create feature branch for new development
+- file pull request into develop branch 
+
 ## Branching
 
 Outsource development of new features into individual branches: main code base
@@ -153,20 +169,6 @@ If new feature shall be developed based on last feature, while pull request of
 last feature is not yet merged:
 - create new feature branch based on last feature
 
-## Gitflow workflow
-
-- NEVER rewrite history that already was published to github 
-- NEVER directly commit to master branch
-- create feature branch for new development
-- file pull request into develop branch 
-
-
-## Git Gui
-
-## Binary files and large data files
-
-Remember: every data that you ever add to your repository will reside in the database for ever! (At least, if you do not mess with the git database on a very fundamental level) Hence, be careful not to commit large datafiles that change on a regular basis.
-(For a more extensive description of the problem of large data files see http://grollchristian.wordpress.com/2013/10/01/git-for-data-analysis-1 )
 
 # Using Github
 
@@ -193,17 +195,6 @@ http://mashable.com/2013/06/24/markdown-tools/
 
 Also, it is easy to reference commits, people or pull requests and the like.
 
-# Development workflow
-
-## Fork model
-
-Avoid re-writing history of already published commits.
-
-# Pull Request
-
-Only pull requests are merged into the code base that do not cause any conflicts.
-In order to make sure that your pull request does not show any conflicts, first pull from upstream to master, and merge any new changes into your feature branch. Then, renew your pull request (any further commits to your feature branch should probably be automatically added to your previous pull request).
-
 # Matlab requirements
 
 ## style guidelines
@@ -215,11 +206,9 @@ instead of x, a, b, xx use isAllowed, nObservations, simulatedValues
 
 don't use pluralization: date and dates are hard to distinguish! Use dateArray, dateVector, ...
 
-function documentation:
-
 Logical operators like “=”, “&” and “|” should always be surrounded by white spaces.
 
-## documentation
+## function documentation
 
 ## unit testing
 
@@ -236,39 +225,6 @@ tables
 
 ## Project documentation / tutorial
 
-
-
-
-
-# Instructions for forking workflow
-## Fork Main Repository
-
-Go to the main project repository on
-https://github.com/cgroll/ModernPortfolioTheory and press "Fork". You
-now have a copy of the complete project data in your own github
-account. 
-
-## Clone repository
-
-In order to get the project data to your local computer, go to the
-project repository in *your own account*, and press "clone". You
-really want to clone *your copy* of the project, since this is the only
-one that you are allowed to write to.
-
-## Set upstream
-
-You need to be connected to two different repositories:
-- your *own* version of the project, which you already did clone. Here, you will push all your changes to.
-- the *original* version of the project. From this you will pull the
-  project changes which were made by your collaborators.
-
-Since you did clone only your own copy of the project, you still need
-to set the link to the original project. We will refer to it as
-"upstream". In either Windows or git shell, type
-
-````sh
-git remote add upstream https://github.com/cgroll/ModernPortfolioTheory.git
-````
 
 
 
