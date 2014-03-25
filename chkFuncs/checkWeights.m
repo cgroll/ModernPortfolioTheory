@@ -1,5 +1,7 @@
 function checkWeights(weightsMatrix)
 
+% result = true;
+
 % tolerance level
 tolEps = 1e-6;
 
@@ -13,7 +15,8 @@ end
 
 for ii=1:size(weightsMatrix, 1)   
     if abs(sum(weightsMatrix(ii, :)) - 1) > tolEps;
-        error('portfolio weights do not sum to one!')
+%         result = false;
+        error('WrngWgts','portfolio weights do not sum to one!')
     end
 end
 
