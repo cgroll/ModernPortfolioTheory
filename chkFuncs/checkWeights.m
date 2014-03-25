@@ -16,7 +16,7 @@ end
 for ii=1:size(weightsMatrix, 1)   
     if abs(sum(weightsMatrix(ii, :)) - 1) > tolEps;
 %         result = false;
-        error('WrngWgts','portfolio weights do not sum to one!')
+        error('portf:weights','portfolio weights do not sum to one!')
     end
 end
 

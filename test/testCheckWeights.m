@@ -19,17 +19,17 @@ checkWeights(weightMatrixT);
 % actResult = checkWeights(weightMatrixT);
 % verifyEqual(testCase, actResult, true);
 end
+% 
 
-% function testInvalidInput(testCase)
+function testInvalidInput(testCase)
 % import matlab.unittest.TestCase;
 % import matlab.unittest.constraints.Throws;
-% 
-% weightMatrixF = rand(200,10);
-% % testCase.verifyThat(@() error('SOME:error:id','Error!'), ...
-% %     Throws('SOME:error:id'));
-% 
-% testCase.verifyThat(@() checkWeights(weightMatrixF), ...
-%     Throws(''));
-% % actResult = checkWeights(weightMatrixF);
-% % verifyEqual(testCase, actResult, false);
-% end
+
+weightMatrixF = rand(200,10);
+% testCase.verifyThat(@() error('SOME:error:id','Error!'), ...
+%     Throws('SOME:error:id'));
+
+verifyError(testCase, @() checkWeights(weightMatrixF), 'portf:weights');
+% actResult = checkWeights(weightMatrixF);
+% verifyEqual(testCase, actResult, false);
+end
