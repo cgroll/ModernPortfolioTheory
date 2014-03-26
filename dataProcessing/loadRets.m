@@ -57,3 +57,4 @@ discRet = table(dataArray{1:end-1}, 'VariableNames', {'Index','MMM','ABT','ACE',
 discRet.Properties.RowNames = cellstr(datestr(discRet.Index));
 discRet.Index = [];
 
+end

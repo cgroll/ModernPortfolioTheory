@@ -1,0 +1,14 @@
+The London Interbank Offered Rate is the average interest rate estimated by leading banks in London that they would be charged if borrowing from other banks.[1] It is usually abbreviated to Libor or LIBOR, or more officially to ICE LIBOR (for Intercontinental Exchange Libor). It was formerly known as BBA Libor (for British Bankers' Association Libor or the trademark bbalibor) before the responsibility for the administration was transferred to Intercontinental Exchange. It is the primary benchmark, along with the Euribor, for short term interest rates around the world.[2][3] 
+
+http://en.wikipedia.org/wiki/Libor
+
+
+
+
+Prime rate or prime lending rate is a term applied in many countries to reference an interest rate used by banks. The term originally indicated the rate of interest at which banks lent to favored customers, i.e., those with good credit, though this is no longer always the case. Some variable interest rates may be expressed as a percentage above or below prime rate. 
+
+http://en.wikipedia.org/wiki/Prime_rate
+
+
+Interest Rates downloaded from http://research.stlouisfed.org/fred2/categories/22
+
