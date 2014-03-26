@@ -5,7 +5,7 @@ function checkWeights(weightsMatrix)
 %                   The weights are denoted in rows.
 %
 % Outputs:
-%   result          boolean value 
+%   result          error message if portfolio weights do not sum to one 
 
 % result = true;
 
@@ -24,12 +24,19 @@ end
 
 % no column vector may exist anymore
 
-for ii=1:size(weightsMatrix, 1)   
-    if abs(sum(weightsMatrix(ii, :)) - 1) > tolEps
-%         result = false;
+% get rid of for-loop
+sumRows = sum(weightsMatrix, 2);
+    if any(abs(sumRows - 1) > tolEps)
+    %         result = false;
         error('portf:weights','portfolio weights do not sum to one!')
     end
-end
+
+% for ii=1:size(weightsMatrix, 1)   
+%     if abs(sum(weightsMatrix(ii, :)) - 1) > tolEps
+% %         result = false;
+%         error('portf:weights','portfolio weights do not sum to one!')
+%     end
+% end
 
 
 end
