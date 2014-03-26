@@ -1,4 +1,4 @@
-function [tablePR2]= CalcPR2(tableData,tableWeights)
+function [tablePR]= CalcPR(tableData,tableWeights)
 %**************************************************************************
 % General Information: 
 
@@ -14,7 +14,12 @@ function [tablePR2]= CalcPR2(tableData,tableWeights)
 %**************************************************************************
 % A) General data checks
 
-% A1) Check if weights sum up to 1 c.p.dates with function: "checkWeights"
+% A1) check for equal matrix dimension
+if ~all(size(tableData) == size(tableWeights))
+   error('portf:dimMismatch','data matrix and weights matrix have different dimensions')
+end
+
+% A2) Check if weights sum up to 1 c.p.dates with function: "checkWeights"
 
 checkWeights(tableWeights)
 %**************************************************************************
@@ -24,25 +29,21 @@ checkWeights(tableWeights)
 [valsWeights, stockNamesWeights, datesWeights]=splitTable(tableWeights);
 %**************************************************************************
 
-% A2) check for equal matrix dimension
-if ~all(size(vals) == size(stockNames))
-   error('data matrix and weights matrix have different dimensions')
-end
-
 % A3) check for equal dates
-if ~all(dates == datesWeights)
-   error ('Dates are not equal')
+if ~all(isequal(dates,datesWeights))
+   error ('portf:DateMismatch','Dates are not equal')
 end
 
 % A4) check for equal Stock names
-if ~all (stockNames == stockNamesWeights)
-   error ('Stock names are not equal')
+if ~all (isequal(stockNames, stockNamesWeights))
+   error ('portf:NamesMismatch','Stock names are not equal')
 end
 
 %**************************************************************************
 % C) transform matrix format into table format with headers 'Date' and 
 %'PortfRet'
-
-tablePR2=array2table(vals*valsWeights');
-tablePR2.Properties.RowNames = cellstr(dates);
+arrayPR=sum(vals.*valsWeights,2);
+tablePR=array2table(arrayPR);
+tablePR.Properties.RowNames = cellstr(dates);
+tablePR.Properties.VariableNames = cellstr('PortfRet');
 end
