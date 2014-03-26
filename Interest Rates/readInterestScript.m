@@ -68,3 +68,5 @@ writetable(returnsInterest, 'returnsInterest.csv') % rownames lost, but contains
 interestDailisedWriteTable = returnsInterest(:,[1 350 351]);
 writetable(interestDailisedWriteTable, 'interestDailised.csv'); % also seems to work
 
+%% read interest data
+interest = readInterestDailised();
