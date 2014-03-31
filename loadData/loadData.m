@@ -1,0 +1,2 @@
+discRet = loadRets();
+intRates = readInterestDailised();
