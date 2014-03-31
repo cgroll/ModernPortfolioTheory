@@ -1,4 +1,4 @@
-function interestDailised1 = importfile()
+function interestDailised = readInterestDailised()
 %IMPORTFILE Import numeric data from a text file as a matrix.
 %   INTERESTDAILISED1 = IMPORTFILE(FILENAME) Reads data from text file
 %   FILENAME for the default selection.
@@ -36,10 +36,14 @@ fileID = fopen(filename,'r');
 % This call is based on the structure of the file used to generate this
 % code. If an error occurs for a different file, try regenerating the code
 % from the Import Tool.
-dataArray = textscan(fileID, formatSpec, endRow(1)-startRow(1)+1, 'Delimiter', delimiter, 'EmptyValue' ,NaN,'HeaderLines', startRow(1)-1, 'ReturnOnError', false);
+dataArray = textscan(fileID, formatSpec, endRow(1)-startRow(1)+1,...
+    'Delimiter', delimiter, 'EmptyValue' ,NaN,'HeaderLines', startRow(1)-1, ...
+    'ReturnOnError', false);
 for block=2:length(startRow)
     frewind(fileID);
-    dataArrayBlock = textscan(fileID, formatSpec, endRow(block)-startRow(block)+1, 'Delimiter', delimiter, 'EmptyValue' ,NaN,'HeaderLines', startRow(block)-1, 'ReturnOnError', false);
+    dataArrayBlock = textscan(fileID, formatSpec, endRow(block)-...
+        startRow(block)+1, 'Delimiter', delimiter, 'EmptyValue' ...
+        ,NaN,'HeaderLines', startRow(block)-1, 'ReturnOnError', false);
     for col=1:length(dataArray)
         dataArray{col} = [dataArray{col};dataArrayBlock{col}];
     end
@@ -55,8 +59,9 @@ fclose(fileID);
 % script.
 
 %% Create output variable
-interestDailised1 = table(dataArray{1:end-1}, 'VariableNames', {'Var1','liborDailised','primeDailised'});
+interestDailised = table(dataArray{1:end-1}, 'VariableNames', ...
+    {'Var1','liborDailised','primeDailised'});
 
 %dates as row names
-interestDailised1.Properties.RowNames = cellstr(datestr(interestDailised1.Var1));
-interestDailised1.Var1 = [];
+interestDailised.Properties.RowNames = cellstr(datestr(interestDailised.Var1));
+interestDailised.Var1 = [];
