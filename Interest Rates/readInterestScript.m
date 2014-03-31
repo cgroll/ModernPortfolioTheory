@@ -4,7 +4,8 @@ datestr(prime.date(end,:)) % convert date-integer to string (or readable date)
 %%
 interestDecimal=prime.interestRate/100; % convert x percent to x/100
 %%
-primeDailised = (1+interestDecimal).^(1/250)-1; % convert annualised interest rates to "dailised" ones
+primeDailised = (1+interestDecimal).^(1/250)-1; 
+% convert annualised interest rates to "dailised" ones
 primeDailised(1:10)
 
 %% read Libor (1Month, usd)
@@ -45,10 +46,10 @@ returnsInterest = join(returns, interest);
 
 for ii = 1:height(returnsInterest)
     if isnan(returnsInterest{ii,350})
-        returnsInterest{ii,350}=returnsInterest{ii-1,350};
+        returnsInterest{ii,350} = returnsInterest{ii-1,350};
     end
     if isnan(returnsInterest{ii,351})
-        returnsInterest{ii,351}=returnsInterest{ii-1,351};
+        returnsInterest{ii,351} = returnsInterest{ii-1,351};
     end
 end
 
@@ -64,7 +65,8 @@ end
 % % end obsolete
 
 %% save table as csv
-writetable(returnsInterest, 'returnsInterest.csv') % rownames lost, but contains columnames, date integer correct 
+writetable(returnsInterest, 'returnsInterest.csv') 
+% rownames lost, but contains columnames, date integer correct 
 interestDailisedWriteTable = returnsInterest(:,[1 350 351]);
 writetable(interestDailisedWriteTable, 'interestDailised.csv'); % also seems to work
 
