@@ -16,4 +16,4 @@ portfolioWeightsTable.Properties.VariableNames = discRet.Properties.VariableName
 %% calculate portfolio returns
 portfolioReturns = CalcPR(discRet,portfolioWeightsTable);
 %% analyse portfolio returns
-analysePortfolioReturns(portfolioReturns, 0.05)
+analysePortfolioReturns(portfolioReturns, 0.95)
