@@ -17,3 +17,7 @@ portfolioWeightsTable.Properties.VariableNames = discRet.Properties.VariableName
 portfolioReturns = CalcPR(discRet,portfolioWeightsTable);
 %% analyse portfolio returns
 analysePortfolioReturns(portfolioReturns, 0.95)
+%% compute Sharpe Ratio
+sharpeRatio(portfolioReturns, intRates(:,1)) % with tables
+sharpeRatio(portfolioReturns{:,:}, intRates{:,1}) % with matrix/vector
+sharpe(portfolioReturns{:,:}, intRates{:,1}) % same result as my function
