@@ -1,8 +1,11 @@
 function[sharpeRatio] = sharpeRatio(returns, interest)
 % calculates sharpe ratio
-% input: returns as vector (table), interest rates (on a daily basis) as
-% vector (table)
-% output: sharpe ratio
+% Inputs: 
+%   returns     nx1 table or vector of portfolio returns
+%   interest    nx1 table or vector of interest rates (on a daily basis)
+%
+% Outputs:
+%   sharpeRatio     as scalar value 
 
 % extract matrix if table
 if istable(returns)
