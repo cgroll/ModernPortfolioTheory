@@ -1,7 +1,6 @@
 function [tablePR]= CalcPR(tableData,tableWeights)
-%**************************************************************************
-% General Information: 
-
+%CalcPR calculates portfolio returns for given weights and return tables
+%
 % Inputs:
 %  tableData      nxm table containing return data
 %  tableWeights   nxm table containing weights data

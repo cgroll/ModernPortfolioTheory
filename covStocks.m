@@ -1,4 +1,12 @@
 function Cov = covStocks(mktFactor, valMatrix)
+%covStocks calculates covariance matrix for given factor and returns
+%
+% Inputs:
+%   mktFactor       nx1 table containing market factor
+%   valMatrix       nxd table containing return data
+%
+% Outputs:
+%   Cov             dxd table containing estimated covariances
 
     covFactor = sqrt(cov(mktFactor{:, :}));
     d = size(valMatrix, 2);

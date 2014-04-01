@@ -1,5 +1,5 @@
 function [ empiricalMeanStocks ] = empiricalMeanStocks( valsMatrix, stockNames )
-%EMPIRICALMEANTABLE calculate empirical mean of the returns and create a table
+%empiricalMeanStocks calculate empirical mean for each asset
 %
 % Inputs:
 %   valsMatrix    mxn matrix of stock returns
