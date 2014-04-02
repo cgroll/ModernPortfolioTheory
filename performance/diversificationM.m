@@ -8,7 +8,7 @@ function [structValues] = diversificationM(weights)
 
 % convert to matrix if table
 if istable(weights)
-    weights = weights(:,:);
+    weights = weights{:,:};
 end
 
 % calculate measures

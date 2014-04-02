@@ -6,6 +6,7 @@ function [structValues] = diversification(weights)
 %         standard deviation of weights, number of negative weights and
 %         gini coefficient (herfindahl)
 
+
 numberAssets = sum(weights~=0);
 numberSignificantAssets = sum(abs(weights-0)>0.0001);
 maxWeight = max(weights);
