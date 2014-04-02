@@ -1,10 +1,10 @@
 function [structValues] = diversificationM(weights)
 % calculates several diversification measures
 %
-% input: weights vector
+% input: weights vector/matrix/table
 % output: number of assets, number of significant assets, maximum weight,
 %         standard deviation of weights, number of negative weights and
-%         gini coefficient (herfindahl)
+%         gini coefficient (herfindahl) as struct
 
 % convert to matrix if table
 if istable(weights)
