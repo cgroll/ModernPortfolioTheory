@@ -28,6 +28,18 @@ for ii = 1:size(returns, 1)
     rebalanceAmount(ii) = sum(abs(weights2(ii)-weights(ii)));
 end
 
+% either daily rebalancing or not!!!
+% not assuming daily rebalancing
+portReturns = zeros(size(returns,1),1);
+portReturns(1) = CalcPR(returns(1,:), weights(1,:));
+for ii = 1:size(returns,1)
+    weights2(ii,:) = weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
+    if ii<size(returns,1)
+        portReturns(ii+1) = CalcPR(returns(ii,:),weights2(ii,:));
+    end
+    % add something like if some event then rebalance
+end
+
 % create return struct
 structValues = struct('newWeights', weights2, 'rebalanceAmount'...
     ,rebalanceAmount, 'portReturns', portReturns);
