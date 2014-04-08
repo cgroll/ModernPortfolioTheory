@@ -17,15 +17,17 @@ if istable(returns)
 end
 
 %preallocation
-weights2 = zeros(size(returns,1), size(returns,2));
-%weights after last day's returns
-rebalanceAmount = zeros(size(returns,1),1);
+weightsDueToPriceChanges = zeros(size(returns));
+dailyOVerallRebalancing = zeros(size(returns,1),1);
+
 % sum of rebalancing that has to be done
 
 % assuming daily rebalancing
 for ii = 1:size(returns, 1)
-    weights2(ii,:) = weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
-    rebalanceAmount(ii) = sum(abs(weights2(ii)-weights(ii)));
+    weightsDueToPriceChanges(ii,:) = ...
+        weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
+    dailyOVerallRebalancing(ii) = ...
+        sum(abs(weightsDueToPriceChanges(ii) - weights(ii)));
 end
 
 % either daily rebalancing or not!!!
@@ -33,14 +35,14 @@ end
 portReturns = zeros(size(returns,1),1);
 portReturns(1) = CalcPR(returns(1,:), weights(1,:));
 for ii = 1:size(returns,1)
-    weights2(ii,:) = weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
+    weightsDueToPriceChanges(ii,:) = weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
     if ii<size(returns,1)
-        portReturns(ii+1) = CalcPR(returns(ii,:),weights2(ii,:));
+        portReturns(ii+1) = CalcPR(returns(ii,:),weightsDueToPriceChanges(ii,:));
     end
     % add something like if some event then rebalance
 end
 
 % create return struct
-structValues = struct('newWeights', weights2, 'rebalanceAmount'...
-    ,rebalanceAmount, 'portReturns', portReturns);
+structValues = struct('newWeights', weightsDueToPriceChanges, 'rebalanceAmount'...
+    ,dailyOVerallRebalancing, 'portReturns', portReturns);
 end

@@ -1,6 +1,13 @@
-function[portfolioWeightsTable] = randPortfolioWeights(discRet)
-% creates random portfolio weights for a given return table
-% three periods with different weights each
+function [portfolioWeightsTable] = randPortfolioWeights(discRet)
+%randPortfolioWeights generate random weights for return table
+%
+% Inputs:
+%   discRet     mxn table of return data
+%
+% Outputs:
+%   portfolioWeightsTable   mxn table consisting of three different
+%                           random portfolio weights that are held
+%                           approximately a third of the time each
 
 sizeRet=size(discRet);
 
