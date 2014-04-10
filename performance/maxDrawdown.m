@@ -29,13 +29,18 @@ end
 drawdowns = minimum-price;
 % find global max drawdown
 maxDrawdown = min(drawdowns);
+
 % find indices
 indexStart = find(drawdowns == maxDrawdown);
 indexEnd = find(price == minimum(indexStart));
 
-
+% compute standardized maximum drawdown
+% (normal max drawdown is only in relation to the first price value
+% instead of to the price right before the drawdown)
+maxDrawdownStandard = maxDrawdown / price(indexStart);
 
 % create return struct
 structValues = struct('maximumDrawdown', maxDrawdown,...
+    'maxDrawdownStandardized', maxDrawdownStandard,...
     'Index', [indexStart, indexEnd]);
 end
