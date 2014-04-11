@@ -14,4 +14,4 @@ maxDraw = maxDrawdown(discRet(:,1));
 plotMaxDrawdown(maxDraw, discRet(:,1));
 
 %% wikipedia algorithm
-maxDrawWiki = maxDrawdownWiki(discRet(:,1)); 
+maxDrawWiki = maxDrawdownWiki(discRet(:,1));
