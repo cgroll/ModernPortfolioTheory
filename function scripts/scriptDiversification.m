@@ -20,4 +20,6 @@ divMTest.gini
 % create Portfolio weights (random)
 %loadData
 portfolioWeightsTable = randPortfolioWeights(discRet);
-divMTable = diversification(portfolioWeightsTable);
+divMTable = diversification(portfolioWeightsTable); % all wrong??
+%% returns a table
+divMTable2 = diversificationTable(portfolioWeightsTable);

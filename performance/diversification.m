@@ -6,8 +6,8 @@ function [structValues] = diversification(weights)
 %         standard deviation of weights, number of negative weights and
 %         gini coefficient (herfindahl)
 
+
 if istable(weights)
-    
     weights = weights{:,:};
 end
 
@@ -23,6 +23,7 @@ absweights = absweights./repmat(sum(absweights,2),1,size(weights,2));
 gini = sum(absweights.^2);
 % Herfindahl index as special case of gini coefficient because of the 
 % limited number of assets 
+
 
 
 structValues = struct('numberAssets', numberAssets, 'numberSignificantAssets'...
