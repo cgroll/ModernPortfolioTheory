@@ -8,13 +8,13 @@ sigmaAsset = std(assetRet,[],1);
 muAsset = mean(assetRet,1);
 
 sigmaPortfolio = std(portRet);
-muPortfolio = std(portRet);
+muPortfolio = mean(portRet);
 
 
-
+figure
 plot(sigmaAsset,muAsset,'.', 'color', 0.7*[1 1 1]);
 hold on;
-plot(sigmaPortfolio, muPortfolio,'.', 'color', 'red', 'LineWidth',3);
+plot(sigmaPortfolio, muPortfolio,'.', 'color', 'red', 'MarkerSize',20);
 
 
 xlabel 'sigma';
