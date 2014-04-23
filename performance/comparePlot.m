@@ -1,4 +1,5 @@
 function [] = comparePlot(assetRet, portRet)
+% visualize time series for all single assets and portfolio
 
 pricesAssets = cumprod(assetRet{:,:}+1,1);
 pricesPortfolio = cumprod(portRet{:,:}+1);

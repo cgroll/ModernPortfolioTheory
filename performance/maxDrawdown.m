@@ -1,11 +1,8 @@
-function [structValues] = maxDrawdown(discRet)
+function [structValues] = maxDrawdown(discRet, logRet)
 % calculates maximum drawdown by searching for the lowest price following
-% each observation and determine the biggest difference
+% each observation and determine the biggest difference. if logRet = true it 
+% searches for the biggest difference of the logarithmic "prices".
 
-% alternative algorithm:
-% find for every observation the lowest price that comes afterwards
-% and determine the lowest difference
-%
 % input: disc returns (vector)
 % output: struct with maximum drawdown as period (indices) and value
 
@@ -18,6 +15,9 @@ end
 ret = discRet+1;
 price = cumprod(ret); % starting with t=1
 
+if logRet==true
+    price = log (price);
+end
 
 % calculate measures
 % find minimum after each value
@@ -31,7 +31,9 @@ drawdowns = minimum-price;
 maxDrawdown = min(drawdowns);
 
 % find indices
-indexStart = find(drawdowns == maxDrawdown);
+indexStart = find(drawdowns == maxDrawdown,1);
+%disp(num2str(indexStart)) %%% problems if maxDrawdown occurs several
+%times
 indexEnd = find(price == minimum(indexStart));
 
 % compute standardized maximum drawdown

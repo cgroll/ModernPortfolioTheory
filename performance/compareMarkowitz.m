@@ -1,5 +1,5 @@
 function [] = compareMarkowitz(assetRet, portRet)
-
+% sigma-mu-plot for the returns of the single assets and the portfolio
 
 assetRet = assetRet{:,:};
 portRet = portRet{:,:};

@@ -31,6 +31,6 @@ hold on;
      prices(maxDrawdownStruct.Index(1):maxDrawdownStruct.Index(2)),...
      'color','red');
 shg
-
+hold off;
 
 end
