@@ -31,18 +31,22 @@ price = cumprod(ret); % starting with t=1
 
 MDD = 0;
 peak = -99999;
+%peakIndex = 0; % when does max drawdown start
 DD = zeros(length(price));
 
 for i = 1:length(price)
     if (price(i) > peak)
         peak = price(i);
+        
     end
     DD(i) = 100 * (peak - price(i)) / peak;
     if (DD(i) > MDD)
         MDD = DD(i);
+        %peakIndex = i;
     end
 end
 
+%endIndex = find(price==min(price(peakIndex:end)));
 
 % % calculate measures
 % % find minimum after each value
@@ -70,4 +74,5 @@ end
 %     'Index', [indexStart, indexEnd]);
 
 structValues = struct('maximumDrawdown', MDD);
+%structValues = struct('maximumDrawdown', MDD, 'Index', [peakIndex, endIndex]);
 end
