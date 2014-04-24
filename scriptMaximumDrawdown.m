@@ -23,6 +23,7 @@ hold off;
 
 %% wikipedia algorithm
 maxDrawWiki = maxDrawdownWiki(discRet(:,1)); 
+%plotMaxDrawdown(maxDrawWiki, discRet(:,1)); % not working
 
 %% for a table
 % doesn't work
