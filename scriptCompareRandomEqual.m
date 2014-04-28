@@ -1,5 +1,6 @@
 % interpretation randomly drawn random weights.
 % it therefore might not be valid for another run.
+loadData()
 
 %% create random weight matrix
 randomWeights = createPortfolioWeights(discRet, 'random');
@@ -21,8 +22,9 @@ divEqu(1,:) % values for equal weights (for whole period the same)
 % naturally for random portfolio weights not as balanced
 
 %% calculate maximum drawdown log
-maxLR = maxDrawdown(portfolioRandom, true)
-maxLE = maxDrawdown(portfolioEqual, true)  
+maxLR = maxDrawdown(portfolioRandom)
+maxLR = maxDrawdownWiki(portfolioRandom)
+maxLE = maxDrawdown(portfolioEqual)  
 % a little less log drawdown for equal weights
 plotMaxDrawdown(maxLR, portfolioRandom);
 hold on;
@@ -31,8 +33,8 @@ hold off;
 % hardly any difference between both portfolios
 
 %% calculate maximum drawdown not log
-maxR = maxDrawdown(portfolioRandom, false)
-maxE = maxDrawdown(portfolioEqual, false)  
+maxR = maxDrawdown(portfolioRandom)
+maxE = maxDrawdown(portfolioEqual)  
 %absolute and standardized drawdown a little less for equally weighted
 %portfolio
 plotMaxDrawdown(maxR, portfolioRandom);
