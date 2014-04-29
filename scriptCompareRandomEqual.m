@@ -1,13 +1,14 @@
 % interpretation randomly drawn random weights.
 % it therefore might not be valid for another run.
-loadData()
+% loadData()
+getData()
 
 %% create random weight matrix
-randomWeights = createPortfolioWeights(discRet, 'random');
-all(abs(sum(randomWeights{:,:},2)-1)<0.0001) % seems to work
+%randomWeights = createPortfolioWeights(discRet, 'random');
+%all(abs(sum(randomWeights{:,:},2)-1)<0.0001) % seems to work
 %% create equal weight matrix
-equalWeights = createPortfolioWeights(discRet, 'equal');
-all(abs(sum(equalWeights{:,:},2)-1)<0.0001) % seems to work
+%equalWeights = createPortfolioWeights(discRet, 'equal');
+%all(abs(sum(equalWeights{:,:},2)-1)<0.0001) % seems to work
 %% calculate portfolio returns
 portfolioRandom = CalcPR(discRet, randomWeights);
 portfolioEqual = CalcPR(discRet, equalWeights);
@@ -23,7 +24,7 @@ divEqu(1,:) % values for equal weights (for whole period the same)
 
 %% calculate maximum drawdown log
 maxLR = maxDrawdown(portfolioRandom)
-maxLR = maxDrawdownWiki(portfolioRandom)
+%maxLR = maxDrawdownWiki(portfolioRandom)% function no longer existing
 maxLE = maxDrawdown(portfolioEqual)  
 % a little less log drawdown for equal weights
 plotMaxDrawdown(maxLR, portfolioRandom);
@@ -32,15 +33,16 @@ plotMaxDrawdown(maxLE, portfolioEqual);
 hold off;
 % hardly any difference between both portfolios
 
+%% function argument no longer existing:
 %% calculate maximum drawdown not log
-maxR = maxDrawdown(portfolioRandom)
-maxE = maxDrawdown(portfolioEqual)  
+%maxR = maxDrawdown(portfolioRandom)
+%maxE = maxDrawdown(portfolioEqual)  
 %absolute and standardized drawdown a little less for equally weighted
 %portfolio
-plotMaxDrawdown(maxR, portfolioRandom);
-hold on;
-plotMaxDrawdown(maxE, portfolioEqual);
-hold off;
+%plotMaxDrawdown(maxR, portfolioRandom);
+%hold on;
+%plotMaxDrawdown(maxE, portfolioEqual);
+%hold off;
 % also hardly any difference between both portfolios
 
 %% Sharpe Ratio (libor interest rates)
