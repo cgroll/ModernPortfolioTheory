@@ -4,10 +4,24 @@ function [structValues] = rebalance(returns, weights)
 % input: returns, weights table
 % output: new weights, amount of rebalancing necessary, portfolio returns
 
-% convert to matrix if table
+%% begin not work
+% convert to table if matrix (for CalcPR to work)
+% not sure, however, if we should go through all this to make this function
+% applicable to matrices
+% if ~istable(returns)
+%     returns=array2table(returns);
+% end
+% if ~istable(weights)
+%     weights=array2table(weights);
+% end
+% not working anyway, because CalcPR needs stock names!!!
+%% end not work
+
 portReturns = CalcPR(returns,weights);
+
 portReturns = portReturns{:,:};
 
+% convert to matrix if table
 if istable(weights)
     weights = weights{:,:};
 end
@@ -18,7 +32,8 @@ end
 
 %preallocation
 weightsDueToPriceChanges = zeros(size(returns));
-dailyOVerallRebalancing = zeros(size(returns,1),1);
+dailyRebalancing = zeros(size(returns,1), size(returns,2));
+%dailyOverallRebalancing = zeros(size(returns,1),1);
 
 % sum of rebalancing that has to be done
 
@@ -26,23 +41,20 @@ dailyOVerallRebalancing = zeros(size(returns,1),1);
 for ii = 1:size(returns, 1)
     weightsDueToPriceChanges(ii,:) = ...
         weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
-    dailyOVerallRebalancing(ii) = ...
-        sum(abs(weightsDueToPriceChanges(ii) - weights(ii)));
+%     dailyRebalancing(ii,:) = ...
+%         weightsDueToPriceChanges(ii,:) - weights(ii,:);
+    
 end
 
-% either daily rebalancing or not!!!
-% not assuming daily rebalancing
-portReturns = zeros(size(returns,1),1);
-portReturns(1) = CalcPR(returns(1,:), weights(1,:));
-for ii = 1:size(returns,1)
-    weightsDueToPriceChanges(ii,:) = weights(ii,:).*(1+returns(ii,:))/(1+portReturns(ii));
-    if ii<size(returns,1)
-        portReturns(ii+1) = CalcPR(returns(ii,:),weightsDueToPriceChanges(ii,:));
-    end
-    % add something like if some event then rebalance
-end
+%     weightsDueToPriceChanges = ...
+%         weights.*(1+returns)/(1+portReturns);
+    dailyRebalancing = ...
+        weightsDueToPriceChanges - weights;
+dailyOverallRebalancing = ...
+        sum(abs(dailyRebalancing),2);
 
 % create return struct
-structValues = struct('newWeights', weightsDueToPriceChanges, 'rebalanceAmount'...
-    ,dailyOVerallRebalancing, 'portReturns', portReturns);
+structValues = struct('newWeights', weightsDueToPriceChanges, ...
+    'rebalance', dailyRebalancing, 'rebalanceAmount'...
+    ,dailyOverallRebalancing, 'portReturns', portReturns);
 end
