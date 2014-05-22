@@ -1,8 +1,16 @@
-function [ weights ] = minimumVariance( covariates )
-%calculates weights for minimum variance portfolio
-%   Detailed explanation goes here
-n = length(covariates(1,:));
-weights = quadprog(covariates, [],[],[], ones(1,n),1);
+function wgts = minimumVariance(covMatr)
+% calculates weights for global minimum variance portfolio
+%
+% Inputs:
+%   covMatr     nAss x nAss matrix of asset covariances
+%
+% Outputs:
+%   wgts        1 x nAss matrix of asset weights
+%   
+
+nAss = length(covMatr(1,:));
+weights = quadprog(covMatr, [],[],[], ones(1,nAss),1);
+wgts = transpose(weights);
 
 end
 

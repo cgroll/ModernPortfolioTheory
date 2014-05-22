@@ -1,14 +1,28 @@
-function [ weights ] = EfficientPortfolioNoShortSelling( covariates, mu, targetReturn )
-% calculates efficient portfolio without Short selling
-%   Detailed explanation goes here
+function [ weights ] = EfficientPortfolioNoShortSelling(covMatr, mus, targetReturn )
+% calculates efficient portfolio without short selling
+%
+% Inputs:
+%
+% Outputs:
+%
 
-if (max(mu)<targetReturn)
-error('target can''t not be reached');
+nAss = length(mus);
+
+if (max(mus)<targetReturn)
+    error('target can''t not be reached');
 end
-   
-restrictionsLeftHand = [ones(1,length(mu));mu];
-restrictionsRightHand = [1,targetReturn];
-options = optimset('Algorithm','active-set','Display','off');
-weights = quadprog(covariates,[],[],[],restrictionsLeftHand,restrictionsRightHand,zeros(length(mu),1),ones(length(mu),1),[], options);
 
+% set up equality restrictions
+eqRestrictionsLeftHand = [ones(1, nAss); mus];
+eqRestrictionsRightHand = [1, targetReturn];
+
+% set up inequality restrictions
+lb = zeros(nAss, 1);
+ub = ones(nAss,1);
+
+options = optimset('Algorithm','active-set','Display','off');
+weights = quadprog(covMatr,[],[],[],...
+    eqRestrictionsLeftHand, eqRestrictionsRightHand,...
+    lb, ub, ...
+    [], options);
 end

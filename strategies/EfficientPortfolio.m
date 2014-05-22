@@ -1,14 +1,29 @@
-function [ weights ] = EfficientPortfolio( covariates, mu, targetReturn )
-% calculates efficient portfolio 
-% calculates efficient portfolio for given covariates, expected returns and
-% targetReturn, see http://hkumath.hku.hk/~imr/records0708/LaiLec1.pdf, p.4
-n = length(mu);
-a = mu/covariates * ones(n,1);
-b = mu/covariates * transpose(mu);
-c = ones(1,n)/covariates * ones(n,1);
+function wgts = EfficientPortfolio(covMatr, mus, targetReturn )
+% calculates efficient portfolio for given target expected return
+%
+% Inputs:
+%   covMatr         nAss x nAss matrix of asset covariances
+%   mus             1 x nAss matrix of mean asset returns
+%   targetReturn    scalar value: target expected return
+%
+% Outputs:
+%
+% calculates efficient portfolio for given covariance matrix, expected
+% returns and targetReturn, see
+% http://hkumath.hku.hk/~imr/records0708/LaiLec1.pdf, p.4
+
+nAss = length(mus);
+
+% calculate auxiliary variables
+a = mus/covMatr * ones(nAss,1);
+b = mus/covMatr * transpose(mus);
+c = ones(1,nAss)/covMatr * ones(nAss,1);
 d = b*c-a^2;
-g = b*(covariates\ones(n,1)) - a*(covariates\transpose(mu));
-h = targetReturn * (c * (covariates\transpose(mu)) - a * (covariates\ones(n,1)));
+
+g = b*(covMatr\ones(nAss,1)) - a*(covMatr\transpose(mus));
+h = targetReturn * (c * (covMatr\transpose(mus)) - a * (covMatr\ones(nAss,1)));
 weights = (g + h)/d;
+
+wgts = transpose(weights);
 end
 

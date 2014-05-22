@@ -1,19 +1,19 @@
-function [ weights ] = maximumSharpeRatio( covariates, mu, interestRate)
+function [ wgts ] = maximumSharpeRatio( covMatr, mus, interestRate)
 % caluculates weights for Portfolio, that maximizes Sharpe Ratio
 %   Detailed explanation goes here
 
 %Minimizing negativ Sharpe Ratio => maximizing Sharpe Ratio
-optimalMu =  fminsearch(@calobj,mean(mu));
+optimalMu =  fminsearch(@calobj,mean(mus));
 
 %calculating weights for maximal Sharpe Ratio
-weights = EfficientPortfolio(covariates,mu,optimalMu);
+wgts = EfficientPortfolio(covMatr,mus,optimalMu);
 
     %Function that returns negativ Sharpe Ratio
     function sharpeRatio = calobj(targetReturn)
         
-        weights=EfficientPortfolio(covariates,mu,targetReturn);
-        portfolioMu = mu*weights;
-        portfolioVariance = transpose(weights) * covariates * weights;
+        wgts=EfficientPortfolio(covMatr,mus,targetReturn);
+        portfolioMu = mus*wgts';
+        portfolioVariance = wgts * covMatr * wgts';
         sharpeRatio = -(portfolioMu - interestRate)/portfolioVariance;
         
     end
