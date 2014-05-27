@@ -1,4 +1,4 @@
-function wgts = EfficientPortfolio(covMatr, mus, targetReturn )
+function [wgts, varPor, muPor] = EfficientPortfolio(covMatr, mus, targetReturn )
 % calculates efficient portfolio for given target expected return
 %
 % Inputs:
@@ -7,6 +7,9 @@ function wgts = EfficientPortfolio(covMatr, mus, targetReturn )
 %   targetReturn    scalar value: target expected return
 %
 % Outputs:
+%   wgts            1 x nAss matrix of asset weights
+%   varPor          scalar value: portfolio variance
+%   muPor           scalar value: expected portfolio return
 %
 % calculates efficient portfolio for given covariance matrix, expected
 % returns and targetReturn, see
@@ -25,5 +28,8 @@ h = targetReturn * (c * (covMatr\transpose(mus)) - a * (covMatr\ones(nAss,1)));
 weights = (g + h)/d;
 
 wgts = transpose(weights);
+varPor = transpose(weights) * covMatr * weights;
+muPor = mus * weights;
+
 end
 
