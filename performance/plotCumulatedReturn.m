@@ -20,7 +20,10 @@ dates = discRet.Properties.RowNames;
 datesAsNumbers = datenum(dates);
 
 plot(datesAsNumbers, normPrices)
+if(length(discRet.Properties.VariableNames) > 1)
+    legend(discRet.Properties.VariableNames)
 datetick 'x'
+
 
 end
 
