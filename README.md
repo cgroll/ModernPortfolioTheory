@@ -7,6 +7,11 @@ in order to participate in the development process. If you are
 interested in tips on the usage of the package, neither documentation
 nor tutorial are generated yet.  
 
+# Access to MATLAB
+
+You can easily access MATLAB through the quite cheap [MATLAB for
+student's license](http://www.mathworks.de/academia/student_version/).
+
 # Installation on windows
 
 ## Create account on Github
